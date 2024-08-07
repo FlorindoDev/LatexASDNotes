@@ -1,0 +1,24 @@
+void DFS() {
+    init(stack,visitedVertices,adjIterators);
+    for(int v=vertices.first(); vertices.hasMore();
+    v=vertices.Next())
+    if(!v.isVisited()){
+        PreVisit(v);
+        stack.push(v);
+        while(!stack.isEmpty()){
+            v = stack.top();
+            v.markVisited();
+            while(adjIterators[v].hasNext() and
+                (w = adjIterators[v].Next()).isVisited())
+                    // do nothing;
+            
+            if(!w.isVisited()){
+                PreVisit(w);
+                stack.push(w);
+            }else{
+                stack.pop();
+                PostVisit(v);
+            }
+        }
+    }
+}

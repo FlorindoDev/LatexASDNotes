@@ -1,0 +1,6 @@
+int(*fp)(char*); // fp: un puntatore a una funzione
+                // che prende in ingresso un puntatore
+                // a carattere e restituisce un intero
+                
+int* f(char*) // f:  prende in ingresso
+                // un puntatore a carattere e restituisce un puntatore ad intero

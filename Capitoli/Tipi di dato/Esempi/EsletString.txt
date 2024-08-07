@@ -1,0 +1,3 @@
+char* p="Plato"; // errore da C++11 in poi. poiche' char* non e' costante
+
+char p[]="Plato"; // p diventa un array di 5. 

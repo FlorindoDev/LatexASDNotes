@@ -1,0 +1,14 @@
+enum Traffic_light { red, yellow, green };
+enum Warning { green, yellow, orang e, red };
+
+void f(Traffic_light x)
+{
+    if (x == 9) { /* ... */ } 
+                        // OK (but Traffic_light doesn't have a 9)
+                        
+    if (x == red) { /* ... */ } // error : two reds in scope
+    
+    if (x == Warning::red) { /* ... */ } // OK (Ouch!)
+    
+    if (x == Traffic_light::red) { /* ... */ } // OK
+}

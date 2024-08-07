@@ -1,0 +1,67 @@
+\subsection{String}
+La \textbf{standard library} mette a disposizione il tipo \code{stringa} per completare i letterali \code{stringa}. \newline il tipo stringa fornisce utili \textbf{operatori} come:
+
+\begin{itemize}
+    \item \textbf{la concatenazione(\code{+}):}
+    \begin{tcolorbox}[width=15cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Stringe e Random/Esempi/ConString.txt}
+        \begin{itemize}
+            \item  \textbf{\textcolor{blue}{NB:}} \textbf{auto} è una parola chiave che detecta il automatico il tipo che stiamo assegnato alla variabile \code{addr}.
+            \item Perché non usarlo sempre ? Altrimenti cererebbe ambiguità e difficoltà nella ricerca di eventuali errori
+        \end{itemize}
+    \end{tcolorbox}
+    \item \textbf{Operatore (\code{+=})}
+    \lstinputlisting{Capitoli/Stringe e Random/Esempi/EsConstring2.txt}
+\end{itemize}
+Una \textbf{stringa} è \code{mutabile} quindi può cambiare nel  tempo. \newline possiamo manipolarla utilizzando anche l'operatore \textbf{\textcolor{blue}{\code{[]}}}. \newline
+\begin{tcolorbox}[width=15cm, boxsep=10pt]
+    \textbf{Ecco alcuni esempi:}
+    \lstinputlisting{Capitoli/Stringe e Random/Esempi/EsManipolazioneStringa.txt}
+\end{tcolorbox}
+
+\begin{itemize}
+    \item \textcolor{blue}{\code{sustr()}} restituisce una string che è una copia della
+    stringa indicata dagli argomenti (inizio e lunghezza).
+    \item \textcolor{blue}{\code{replace()}} sostituisce una sotto stringa con una stringa,
+    anche di lunghezza diversa.
+    \item Nei confronti tra stringhe o con letterali stringa si considera
+    l’ordine lessicografico.
+\end{itemize}
+\subsubsection{Costruttori}
+\begin{itemize}
+    \item \textbf{Costruttori senza puntatori:}
+    \begin{tcolorbox}[width=15cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Stringe e Random/Esempi/Costr1.txt}
+    \end{tcolorbox}
+    \item  \textbf{Costruttore con puntatori:}
+    \begin{tcolorbox}[width=15cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Stringe e Random/Esempi/Costr2.txt}
+    \end{tcolorbox}
+    \item \textbf{allucini metodi utili:}
+    \begin{tcolorbox} 
+        
+        \begin{itemize}
+            \item \textbf{\textcolor{blue}{\code{s.size()}}}: numero di caratteri in \code{s}
+            \item \textbf{\textcolor{blue}{\code{s.length()}}}: lo stesso
+            \item \textbf{\textcolor{blue}{\code{s.clear()}}}: per pulire 
+            \item \textbf{\textcolor{blue}{\code{s.empty()}}}: \code{bool}, è vuota?
+            \item \textbf{\textcolor{blue}{\code{s.front()}}}: \code{s[0]}
+            \item \textbf{\textcolor{blue}{\code{s.back()}}}: \code{s[s.size()-1]}
+        \end{itemize}
+    \end{tcolorbox}
+\end{itemize}
+\newpage
+\subsection{Random}
+La libreria \code{<radom>} ci permette di generare numeri \textbf{pseudo-casuali} tramite l'ausilio di due parti:
+\begin{itemize}
+    \item Il \textbf{motore(engine)} che genera i numeri \textbf{pesudo-casuali} secondo una distribuzione.
+    \item una \textbf{distribuzione} quindi come sono distribuiti i valori, di che tipo sono e l'intervallo.  (es:
+            \code{uniform\_int\_distribution}, \newline
+            \code{normal\_distribution},\newline
+            \code{exponential\_distribution}, . . . )\newline
+
+    \begin{tcolorbox}[width=15cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Stringe e Random/Esempi/Radomes.txt}
+        \textbf{\textcolor{blue}{NB:}} Per far funzionare quesro codice c'è bisogno della libreria \code{<radom>} e \code{<functional>}
+    \end{tcolorbox}
+\end{itemize}

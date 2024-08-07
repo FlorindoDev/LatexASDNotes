@@ -1,0 +1,23 @@
+void error(string s) { /* ... */ }
+
+void (*f1)(string) = &error; // OK: same as = error
+void (*f2)(string) = error; // OK: same as = &error
+
+void g(){
+    f1("Vasa"); // OK: same as (*f1)("Vasa")
+    (*f1)("Mary Rose"); // OK: as f1("Mary Rose")
+}
+
+void (*pf)(string); // pointer to void(str ing)
+void f1(string); // void(str ing)
+int f2(string); // int(string)
+void f3(int*); // void(int*)
+
+void f(){
+    pf = &f1; // OK
+    pf = &f2; // error : bad return type
+    pf = &f3; // error : bad argument type
+    pf("Hera"); // OK
+    pf(1); // error : bad argument type
+    int i = pf("Zeus"); // error : void assigned to int
+}

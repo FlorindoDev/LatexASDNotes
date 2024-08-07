@@ -1,0 +1,2 @@
+float v[3]; // an array of three floats: v[0], v[1], v[2]
+char* a[32]; // an array of 32 pointers to char: a[0] .. a[31]

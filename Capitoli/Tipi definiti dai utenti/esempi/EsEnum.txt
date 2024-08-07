@@ -1,0 +1,16 @@
+enum class Color {red,blue,green};
+
+enum class Traffic_light {green,yellow,red};
+
+Color col=Color::red;
+
+Traffic_light light=Traffic_light::red;
+
+//Errori
+
+Color x=red; // NO: quale red?
+Color y=Traffic_light::red; // NO: tipo sbagliato!
+Color z=Color::red; // OK
+
+int i=Color::red; // No, tipo sbagliato
+Color c=2; // No, tipo sbagliato

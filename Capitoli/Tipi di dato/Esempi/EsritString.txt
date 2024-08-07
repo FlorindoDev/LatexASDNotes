@@ -1,0 +1,4 @@
+const char* error_message(int i){
+// ...
+return "range error";
+}

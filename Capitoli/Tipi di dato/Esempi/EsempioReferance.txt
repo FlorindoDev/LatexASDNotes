@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int x = 10;
+    
+    // ref diventa un alias di x
+    int& ref = x;
+    
+    // Il valore di x viene cambiato!
+    ref = 20;
+    cout << "x=" << x << '\n';
+    
+    // Se cambio il valore di x, cambia anche
+    quello di ref 30
+    x = 30;
+    cout << "ref=" << ref << '\n';
+    
+    return 0;
+}

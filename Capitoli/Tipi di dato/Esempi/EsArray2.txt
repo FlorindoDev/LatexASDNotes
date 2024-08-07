@@ -1,0 +1,5 @@
+void f(int n)
+{
+int v1[n]; // error : array size not a constant expression
+vector<int> v2(n); // OK: vector with n int elements
+}

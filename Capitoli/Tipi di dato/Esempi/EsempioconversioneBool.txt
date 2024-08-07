@@ -1,0 +1,4 @@
+bool b1 = 7; // 7!=0, so b becomes true
+bool b2 {7}; // error : il bool non puo rappresentare 7
+int i1 = true; // i1 becomes 1
+int i2 {true}; // i2 becomes 1

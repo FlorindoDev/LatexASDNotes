@@ -1,0 +1,4 @@
+//alias utilizzato per p1 e p2
+using P1 = int(*)(int*);
+using P2 = void(*)(void);
+

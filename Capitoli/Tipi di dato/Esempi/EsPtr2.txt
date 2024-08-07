@@ -1,0 +1,4 @@
+int* pi; // pi: un puntatore ad
+intero
+char** ppc; // ppc: un puntatore a puntatore a carattere
+int* ap[15]; // ap: un vettore di 15 puntatori a int

@@ -1,0 +1,17 @@
+void f(int* pi){
+void* pv = pi; // ok: converto implicitamente a
+// puntatore a intero
+
+*pv; // errore: non posso accedere al valore puntato da void*
+// si dice <<dereferenziare>>
+
+++pv; // errore: non posso incrementare il puntatore a void
+// non conosco la dimensione dell'oggetto puntato!
+
+int* pi2 = static_cast<int*>(pv);
+// questo lo posso fare: cast esplicito
+
+double* pd1 = pv; // errore
+double* pd2 = pi; // errore
+double* pd3 = static_cast<double*>(pv); // pericoloso
+}

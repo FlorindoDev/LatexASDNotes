@@ -1,0 +1,10 @@
+void graphTraverse(Graph* G) {
+    int v;
+    for (v=0; v<G->n(); v++)
+        // Initialize mark bits
+        G->setMark(v, UNVISITED);
+        
+    for (v=0; v<G->n(); v++)
+        if (G->getMark(v) == UNVISITED)
+            doTraverse(G, v);
+}

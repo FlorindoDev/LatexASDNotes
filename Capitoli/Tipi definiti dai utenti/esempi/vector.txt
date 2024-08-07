@@ -1,0 +1,11 @@
+struct Vector{
+int sz; // numero di elementi
+double* elem; // punt. ad array di elementi
+};
+
+Vector v; //creazione di una varabile di tipo vector
+
+void vector_init(Vector& v, int s){ // definizione di funzione                             //per l'inizializazione di un vecotor
+v.elem = new double[s];
+v.sz = s;
+}

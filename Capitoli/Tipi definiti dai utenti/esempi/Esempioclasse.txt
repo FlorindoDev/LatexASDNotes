@@ -1,0 +1,15 @@
+class Vector{
+public:
+    Vector(int s) :elem{new double[s]}, sz{s} {
+        } // costruttore
+        
+    double& operator[](int i) { return elem[i];} //nuovo operatore
+    
+    int size() { return sz; }
+    
+    private:
+        double* elem;
+        int sz;
+};
+
+Vector v(6);

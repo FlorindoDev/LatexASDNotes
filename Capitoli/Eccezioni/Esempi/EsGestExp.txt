@@ -1,0 +1,18 @@
+void taskmaster()
+{
+    try {
+        auto result = do_task();
+        // use result
+    }
+    catch (Some_error) {
+        // falisce di fare do_task: gestisce il probelma
+    }
+}
+
+int do_task(){
+    // ...
+    if (/* could perfor m the task */)
+        return result;
+    else
+        throw Some_error{};
+}

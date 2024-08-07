@@ -1,0 +1,86 @@
+Le \textbf{eccezione} provvede a dare delle informazioni sul errore. Lo scopo delle \textbf{eccezioni} è quello di portare l’informazione dal punto in cui un errore è stato \textbf{individuato} a dove può essere \textbf{gestito}. Questa \textbf{eccezione} deve essere gestita da qualcuno. solitamente non si può gestisce nella funzione in cui viene generata(si può ma qui ci concerteremo sul non farlo). Per questo motivo la funzione lancia(\textbf{throws}) l'eccezione. Sarà la funzione chiamante ad occuparsi del eccezione.
+\begin{itemize}
+    \item le \textbf{librerie}: al momento della
+    loro implementazione, lo sviluppatore può non conoscere
+    nemmeno il tipo di programmi in cui verranno utilizzate.
+    \begin{itemize}
+        \item Un errore può venir individuato all’interno di una libreria,
+        ma lì non si sa come trattarlo (poiché non si sa dove sarà utilizzata la libererai). quindi si lancerà un \textbf{eccezione}, cosi sarà L'Utilizzatore della libreria a gestire l'errore a meglio, in base alle sue esigenze.
+        
+        \item \textbf{L’utente} della libreria sa cosa fare \textbf{dell’errore}, ma non come
+        individuarlo (altrimenti lo avrebbe già fatto fuori della libreria). per questo gestisce l'errore in un luogo separato perché è più semplice che identificarlo
+    \end{itemize}
+    \item Ovviamente questo discorso è valido di \textbf{programmi grossi} e
+    strutturati la cui esecuzione si prolunga nel tempo.
+    
+    \item Per catturare(\textbf{catch}) queste eccezioni utilizzeremo il blocco \textcolor{blue}{\code{try-catch}} 
+    \begin{itemize}
+        \item Abbiamo un blocco  \textcolor{blue}{\code{try}} dove ci sono l'Istruzioni da eseguire, nel caso in cui avvenisse un errore(è stata lanciata un eccezione) ci saranno vari blocchi \textcolor{blue}{\code{catch}} per catturare L'Eccezione. Saranno catturate solo quelle specificate.
+        \item invece per lanciare un eccezione si userà la parola chiave \textcolor{blue}{\code{throws}}. utilizzato dalle funzioni che non posso gestire l'errore
+    \end{itemize}
+    \lstinputlisting{Capitoli/Eccezioni/Esempi/EsGestExp.txt}
+    \item l'eccezione Può \textbf{essere di qualsiasi tipo} che ammetta la copia, ma è raccomandabile usare un tipo definito apposta, in modo da minimizzare il \textbf{clash}(scontrarsi) tra errori lanciati da librerie diverse. (es. due eccezioni che usano il tipo interno e utilizza lo stesso numero per errori diversi)
+    \item La libreria \textcolor{blue}{\code{std}} definisce una piccola gerarchia di eccezioni
+    \item Un’eccezione può trasportare informazioni sull’errore che
+rappresenta.
+\end{itemize}
+\subsection{Perché utilizzare L'Eccezione ?}
+\begin{itemize}
+    \item Noi utilizziamo gli L'Eccezione perché il modo tradizionale di gestione del errore non è efficiente e potrebbe portare a soluzione non corrette o mal funzionanti
+    \item \textbf{\textcolor{blue}{\code{caratteristiche gestione errori tradizionale:}}}
+    \begin{itemize}
+        \item \textbf{\textcolor{blue}{Terminare il programma}}
+        \item \textbf{\textcolor{blue}{Restituire un valore di errore}} non sempre possibile (nessun valore disponibile)
+        \item \textbf{\textcolor{blue}{Stato di errore}} Restituire un valore legale, ma lasciare il programma in uno stato di errore (occorre controllare esplicitamente)
+        \item Funzione che gestisce l’errore (si rimanda a come la funzione gestisce l’errore)
+    \end{itemize}
+     \item \textbf{\textcolor{blue}{\code{caratteristiche gestione errori con eccezioni:}}}
+    \begin{itemize}
+       \item \textbf{\textcolor{blue}{Codice più leggibile}} poi si può separare il codice ordinario dal quello per la gestione dei errori.
+       \item  \textbf{\textcolor{blue}{il codice ordinario}} rileva l'errore e lancia l'eccezione.
+    \end{itemize}
+\end{itemize}
+\subsection{Gerarchie degli errori della Liberia standard}
+\begin{itemize}
+    \item \textcolor{blue}{\code{logic\_error}} possono essere individuati o prima che cominci
+    l’esecuzione o attraverso dei test sugli argomenti
+    di funzioni e costruttori.
+    \begin{itemize}
+        \item \textcolor{blue}{\code{length\_error}}
+        \item \textcolor{blue}{\code{domain\_error}}
+        \item \textcolor{blue}{\code{out\_of\_range}}
+        \item \textcolor{blue}{\code{invalid\_argument}}
+        \item \textcolor{blue}{\code{future\_error}}
+    \end{itemize}
+    \item  \textcolor{blue}{\code{runtime\_error}} tutti gli altri
+    \begin{itemize}
+        \item \textcolor{blue}{\code{range\_error}}
+        \item \textcolor{blue}{\code{overflow\_error}}
+        \item \textcolor{blue}{\code{underflow\_error}}
+        \item \textcolor{blue}{\code{system\_error}}
+    \end{itemize}
+
+    \item \textcolor{blue}{\code{bad\_exception}}
+    \item \textcolor{blue}{\code{bad\_alloc}}
+    \item \textcolor{blue}{\code{bad\_typeid}}
+    \item \textcolor{blue}{\code{bad\_cast}}
+\end{itemize}
+\subsection{RAII(acquisizione delle risorse è l'inizializzazione)}
+\begin{itemize}
+    \item \code{C++} non ha un \textbf{garbage collecotr} quindi dobbiamo essere noi ad occuparci della \textbf{de-allocazione} dei oggetti allocati nel \textbf{ heap}.
+    \item Quando una risorsa è \textbf{troppo grande} per lo\textbf{ stack} si alloca nel heap. avremo un \textbf{Proprietario} cioè la classe e incapsulato dentro di essa la risorsa
+    \item  essendo la classe proprietario di quella risorsa deve essere lei(calsse) a deallocare la risorsa quando non ci sarà più bisogno di quella risorsa
+\end{itemize}
+\begin{tcolorbox}[width=15cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Eccezioni/Esempi/EsRAII.txt}
+    \textcolor{blue}{\textbf{NB:}} w è l'oggetto allocato nello stack, quando esce dal suo scope viene deallocato. Quando viene deallocato l'oggetto richiama il suo distruttore.
+\end{tcolorbox}
+\begin{itemize}
+    \item Ogni risorsa viene \textbf{incapsulata} in una \textbf{classe}, in cui
+    \begin{itemize}
+        \item il costruttore \textbf{acquisisce} la risorsa, e lancia un’eccezione se
+        non ci riesce
+        \item il distruttore \textbf{rilascia} la risorsa senza mai lanciare eccezioni
+        
+    \end{itemize}
+\end{itemize}

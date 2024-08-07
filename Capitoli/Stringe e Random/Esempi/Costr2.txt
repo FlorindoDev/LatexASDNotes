@@ -1,0 +1,4 @@
+string s5(nullptr); // pericolosissimo!
+string s6(p); // dipende dal valore di p
+string s7{"OK"}}; // OK puntatore a una
+stringa in stile C

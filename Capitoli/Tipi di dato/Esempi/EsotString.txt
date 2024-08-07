@@ -1,0 +1,6 @@
+const char* p="Heraclitus";
+const char* q="Heraclitus";
+
+void g(){
+if(p==q) cout << "one!\n";
+}

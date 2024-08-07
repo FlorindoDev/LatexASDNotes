@@ -1,0 +1,1 @@
+for(w=G->first(v); w < G->n(); w=G->next(v,w))

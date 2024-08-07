@@ -1,0 +1,7 @@
+string name = "Niels Stroustrup";
+void func(){
+    string s = name.substr(6,10); //"Stroupstrup"
+    name.replace(0,5,"nicholas");
+    name[0] = toupper(name[0])  //in posizione ci sara'
+                                //la lettera in maiuscolo 
+}

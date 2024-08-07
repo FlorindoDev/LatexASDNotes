@@ -1,0 +1,30 @@
+\begin{itemize}
+    \item Come un qualsiasi dato, anche il body di una funzione
+    viene \textbf{memorizzato in memoria}, e quindi ha un \textbf{indirizzo}.
+    \item Ne consegue che possiamo avere \textbf{puntatori} a funzione
+    esattamente come abbiamo puntatori ad un oggetto.
+    \item Ma \textbf{non} possiamo modificare il codice di una funzione
+    accedendovi attraverso il puntatore.
+    \item Ci sono solo due cose che possiamo fare con una
+    funzione:
+    \begin{enumerate}
+        \item \textbf{chiamarla}
+        \item \textbf{prenderne l’indirizzo} 
+    \end{enumerate}
+    \item Il puntatore ottenuto prendendo l’indirizzo di una funzione
+    può quindi essere utilizzato per chiamarla.
+    \lstinputlisting{Capitoli/Puntatori a Funzione/Esempi/EspuntatoriAfunzione.txt}
+    \item Nel caso di puntatore a funzione, il dereferenziamento è
+    opzionale (sia nell’assegnamento che nella chiamata)
+    \item Ovviamente gli argomenti dichiarati per un puntatore a
+    funzione seguono esattamente la stessa sintassi di quelli
+    delle funzioni.
+    \item Posso assegnare a un puntatore a funzione un altra funzione solo se quest'ultima e la stessa \textbf{segnature} del puntatore a funzione.
+    \lstinputlisting{Capitoli/Puntatori a Funzione/Esempi/Es2.txt}
+    \item ho \textbf{rinominato} un puntatore a funzione che ritorna un intero e prende in input un intero come \textbf{P1}
+    \item  ho \textbf{rinominato} un puntatore a funzione che non prende nulla in input e non restituisce nulla come \textbf{P2}
+    \item  posso assegnare una funzione a questi due puntatori solo se la \textbf{firma} e la funzione combaciano 
+\end{itemize}
+\textbf{Un esempio di utilizzo di ptr a funzione}: È un buon modo per parametrizzare gli algoritmi, ad
+esempio, ad un algoritmo di ordinamento posso passare la funzione che confronta due elementi. Cosi se volessi cambiare il funzionamento del confronto mi basterebbe passare come parametro L'Indirizzo di un altra funzione.
+\lstinputlisting{Capitoli/Puntatori a Funzione/Esempi/Es3.txt}

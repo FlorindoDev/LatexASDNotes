@@ -1,0 +1,16 @@
+enum class Warning : char { green, yellow, orange, red };
+
+//di default i valori dei enumaratori sono assegnati in modo
+// crescente da 0
+static_cast<int>(Warning::green)==0
+static_cast<int>(Warning::yellow)==1
+static_cast<int>(Warning::orange)==2
+static_cast<int>(Warning::red)==3
+
+// Se inzializzo un valore
+enum class Warning{ green=12, yellow, orange, red };
+
+static_cast<int>(Warning::green)==12
+static_cast<int>(Warning::yellow)==13
+static_cast<int>(Warning::orange)==14
+static_cast<int>(Warning::red)==15

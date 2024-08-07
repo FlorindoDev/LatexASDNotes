@@ -1,0 +1,10 @@
+// uso un alias per leggibilita '
+using my_engine=default_random_engine;
+using my_distribution= uniform_int_distribution <int>;
+
+my_engine re {};
+my_distribution one_to_six {1,6};
+auto dado = bind(one_to_six,re);
+
+// per usare il generatore dato
+int x=dado();

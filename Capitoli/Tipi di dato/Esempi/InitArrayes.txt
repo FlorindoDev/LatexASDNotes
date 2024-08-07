@@ -1,0 +1,11 @@
+int v1[] = { 1, 2, 3, 4 }; //Grandezza ricavata dal numero 
+                        //di numeri al interno della lista
+
+char v2[] = { 'a', 'b', 'c', 0 };
+char v3[2] = { 'a', 'b', 0 }; // error : too many initializers
+char v4[3] = { 'a', 'b', 0 }; // OK
+
+//Questo:
+int v5[8] = { 1, 2, 3, 4 };
+//e' iquivalente a questo
+int v5[] = { 1, 2, 3, 4 , 0, 0, 0, 0 }

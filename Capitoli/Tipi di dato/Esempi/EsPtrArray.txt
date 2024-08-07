@@ -1,0 +1,8 @@
+int v[] = {1,2,3,4};
+
+int* p1 = v; // conversione implicita:
+
+// puntatore al primo elemento
+int* p2 = &v[0]; // stessa cosa, ma esplicita
+int* p3 = v+4; // puntatore all'elemento
+// dopo l'ultimo

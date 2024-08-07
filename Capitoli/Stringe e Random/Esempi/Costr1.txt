@@ -1,0 +1,5 @@
+string s0; // la stringa vuota
+string s1("Inizializzazione semplice");
+string s2(s1); // copia una stringa
+string s3(7,'a') // "aaaaaaa"
+string s4(0) // in C ok, in C++ Pericoloso!

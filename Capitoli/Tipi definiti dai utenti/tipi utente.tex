@@ -1,0 +1,87 @@
+Abbiamo visto finora dei tipi \textbf{built-in(integrati)} che sono di molto \textbf{basso livello} è sono difficili per un programmatore gestirli e creare applicazioni di alto livello.\newline
+per questo \code{C++} mette a disposizione \textbf{i meccanismi d'astrazione} con cui so costruiscono strutture di \textbf{alto livello}. Queste strutture vengono chiamate \textbf{\textcolor{blue}{tipi definiti dai utenti}(user-defined types)}\newline \newline
+\textbf{Questi tipi definiti dai utenti sono:} 
+\begin{itemize}
+    \item Classi
+    \item Enumeratori
+    \item Struct
+\end{itemize}
+
+\subsection{Esempi di user-defined types}
+Un Esempio di tipo di dato definito dal utente è un vector:
+\lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/vector.txt}
+Questa è la prima versione di una migliore gestione del vettore. \newline\newline
+\textbf{Abbiamo:}
+\begin{itemize}
+    \item \textbf{Primo blocco} definiamo un tipo vector
+    \item \textbf{Secondo blocco} creiamo una variabile di tipo vector
+    \item \textbf{Terzo blocco} definiamo una funzione per l'inizializzazione
+    \item Allochiamo l’array elem sullo heap.
+    \item Si noti che il primo argomento (\textcolor{blue}{\code{Vector\& v}}) è passato per
+    riferimento, in modo da poterlo modificare
+\end{itemize}
+\begin{tcolorbox}[width=15cm, boxsep=10pt]
+    Un utilizzo di questo \textbf{vector} può essere il seguente:
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/utilizzovector.txt}
+    \textcolor{blue}{\textbf{NB}:} in questo caso Il programmatore deve conoscere le strutture interne dell'oggetto
+\end{tcolorbox}
+\newpage
+\subsection{Classi}
+Una \textcolor{blue}{\textbf{classe}} è un insieme di:
+\begin{itemize}
+    \item Attributi
+    \item Metodi
+\end{itemize}
+\textbf{L'interfaccia} della classe è data dalla \textbf{visibilità} dei suoi metodi e attributi(quindi da quelli \textbf{pubblici}). abbiamo anche dei attributi o metodi \textbf{privati} che sono visibili solo al interno della classe.
+\begin{tcolorbox}[width=15cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/Esempioclasse.txt}
+    
+\end{tcolorbox}
+\begin{itemize}
+    \item Abbiamo definito un costruttore che assegna alla variabile locale \textcolor{blue}{\code{elem}} un puntatore a un vettore di \textcolor{blue}{\code{double} }lungo \textbf{"S"} e a \textcolor{blue}{\code{sz}} il numero \textbf{"S"}. Possiamo notare che per assegnare questi valori non c'è bisogno di fare inizializzazioni al interno del corpo del costruttore.
+    \item abbiamo definito un \textbf{nuovo operatore \code{\textcolor{blue}{[]}}}. questo operatore prenderà come input un \code{int i} e restituisce un \textbf{riferimento} a \textcolor{blue}{\code{double}}\newline
+\end{itemize}
+Quindi questa \textbf{\textcolor{blue}{classe}} può avere viarie \textbf{in stanze} che potranno essere diverse fra di loro. Una cosa che le accomuna sarà la loro \textbf{struttura} e il loro \textbf{peso} che sarà uguale per tutti i tipi \textcolor{blue}{\code{Vector}.}
+
+\begin{itemize}
+    \item  \textbf{La struttura} interna del \textbf{vettore} rimane nascosta(in questo caso).
+    \item Notate come l’utilizzo del costruttore risolve il problema.
+\end{itemize}
+\newpage
+\textbf{\textcolor{blue}{A cosa serve una classe ?}}
+\begin{itemize}
+    \item Serve ad \textbf{astrarre} ancora di più un \textbf{oggetto}, rendendolo ancora più \textbf{generale} e più facile da utilizzare
+    \item Infatti con le \textbf{struct} dobbiamo necessariamente sapere come è \textbf{formata} al suo interno , altrimenti non possiamo utilizzarla.
+    \item con le \textbf{classi} non c'è bisogno di questo poiché ci sono \textbf{l'interfaccie}.
+    \item \textbf{l'interfaccia} ci permette di utilizzare la \textbf{classe} anche se non sappiamo come è fatta veramente.
+\end{itemize}
+
+\subsection{Enumerazioni}
+\textbf{L'enumerazioni} vengono usate per rappresentare piccoli insiemi di valori interi.\newline
+Esistono due tipi di enumeratoti: i \textcolor{blue}{\code{enum class}} e i \textcolor{blue}{\code{enum}}
+\subsubsection{Enum class e Enum}
+\begin{itemize}
+    \item Questi interi vivono all’interno dello \textbf{scope} (ambito di definizione) della loro \textbf{enum class}, cosicché lo stesso valore può venir usato in \textbf{enum class} senza confusione.
+    \item Quindi possiamo vedere che il colore \textcolor{blue}{\code{red}} di  \textcolor{blue}{\code{color}} non va in conflitto con quello di  \textcolor{blue}{\textbf{Traffic\_light}} perché sono in \textbf{scope} diversi\newline
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/EsEnum.txt}
+    \newpage
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/Esenum2.txt}
+\end{itemize}
+\begin{itemize}
+    \item La parola chiave \textcolor{blue}{\textbf{\code{class}}} che segue \textcolor{blue}{\textbf{\code{enum}}} specifica che:
+    \begin{itemize}    
+        \item questa enumerazione è \textbf{fortemente tipata} quindi non avvengono conversioni implicite
+        \item i suoi \textbf{enumeratori} hanno un ambito di definizione
+    \end{itemize}
+    \item se togliamo \textcolor{blue}{\textbf{\code{class}}} i valori saranno convertiti in interi normali implicitamente
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/Esenum3.txt}
+\end{itemize}
+\newpage
+\subsubsection{Operaotri per \textcolor{blue}{\textbf{\code{enum class}}}}
+\begin{itemize}
+    \item Per default, un enum class ha solo assegnamento,
+    inizializzazione e confronto \code{(==,<,::)}
+    \item Tuttavia, essendo un tipo definito dall’utente, si possono
+    definire anche dei nuovi operatori:
+    \lstinputlisting{Capitoli/Tipi definiti dai utenti/esempi/OperatoriEnum.txt}
+\end{itemize}

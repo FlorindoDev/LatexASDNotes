@@ -1,0 +1,3 @@
+char c = 'a';
+char* p = &c;
+char c2 = *p;

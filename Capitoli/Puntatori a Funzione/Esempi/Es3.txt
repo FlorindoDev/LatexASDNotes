@@ -1,0 +1,30 @@
+using ConfrontoInt = bool(*)(int, int);
+
+void AlgoritmoX(ConfrontoInt f, int eta1, int eta2){
+        if(f(eta1, eta2)){
+            cout << "Ciao!";
+        }
+}
+
+using ConfrontoInt = bool(*)(int, int);
+
+bool Pippo(int a, int b){
+    if(a>b){
+       return true; 
+    }
+    return false;
+}
+
+int PippoCattivo(int a, int b){
+    if(a>b){
+       return 1; 
+    }
+    return 2;
+}
+
+int main(){
+    AlgoritmoX(Pippo,2,1);          //OK!!
+    AlgoritmoX(PippoCativo,2,1); //error: siganture  diversa del tipo 
+                                //ConfrontoInt con PippoCattivo
+}
+//OUT = ciao
