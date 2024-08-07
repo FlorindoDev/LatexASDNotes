@@ -1,0 +1,6 @@
+// legge un intero e lo mette in i
+int i;
+cin >> i;
+// legge un double e lo mette in d
+double d;
+cin >> d;

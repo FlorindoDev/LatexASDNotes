@@ -1,0 +1,3 @@
+// legge un intero e lo mette in i
+string str; // std::string
+cin >> str;

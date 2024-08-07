@@ -1,0 +1,19 @@
+// Insert e into hash table HT
+template <typename Key, typename E>
+void hashdict<Key, E>::hashInsert(const Key& k, const E& e) {
+
+    int home; // Home position for e
+    int pos = home = h(k); // Init probe sequence
+    
+    //ripeto finche non trovo uno slot dove inserire
+    for (int i = 1; EMPTYKEY != (HT[pos]).key(); i++) { 
+        pos = (home + p(k, i)) % M; // probe
+
+        //non inserisce se la chiave e' gia presente
+        Assert(k != (HT[pos]).key(), "Duplicates not allowed"); 
+    }
+    
+    //Crea un record dove E e' l'elemento e K e' la chiave
+    KVpair<Key,E> temp(k, e); 
+    HT[pos] = temp;
+}

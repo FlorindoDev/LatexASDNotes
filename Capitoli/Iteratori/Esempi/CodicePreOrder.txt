@@ -1,0 +1,23 @@
+template <typename Data>
+BTPreOrderIterator<Data> & BTPreOrderIterator<Data>::operator++(){
+    if(Terminated()){
+        throw std::out_of_range("Sei andato troppo oltre!");
+    }
+
+    if(corrente->HasRightChild()){
+        Stk.Push(corrente->RightChild());
+    }
+
+    if(corrente->HasLeftChild()){
+        Stk.Push(corrente->LeftChild());
+    }
+
+    if(Stk.Empty()){
+        corrente = nullptr;
+    }else{
+        corrente = &(Stk.TopNPop());
+    }
+
+    return *this;
+
+}

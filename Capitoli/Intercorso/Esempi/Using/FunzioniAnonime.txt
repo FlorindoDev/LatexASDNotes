@@ -1,0 +1,7 @@
+#include <functional>
+
+// Alias di tipo per una funzione che prende 
+//due parametri e restituisce un Accumulator
+template <typename Accumulator>
+using FoldFun = 
+    std::function<Accumulator(const Data &, const Accumulator &)>;

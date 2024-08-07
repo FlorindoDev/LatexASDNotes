@@ -1,0 +1,32 @@
+struct Cliente{
+    string nome;
+    int numero;
+};
+
+istream& operator>>(istream& is, Cliente& e)
+// read { "name" , number } pair. Note: for matted with { " " , and }
+{
+    char c, c2;
+    if (is>>c && c=='{' && is>>c2 && c2=='"') { //legge finche'
+                                    //non incontra '{' e '"'
+                                                
+        string name;   // il valore di default di una stringa e': ""
+        
+        while (is.get(c) && c!='"'){ // legge fino all secondo '"' 
+                                    //quindi avra letto tutto il nome                 
+            name+=c;
+        }
+        if (is>>c && c==',') {   //legge fino alla virgola
+            int number = 0;
+            
+            if (is>>number>>c && c=='}') { // legge il numero e' 
+                                        //subito dopo la '}'
+            
+                 e = {name ,number}; // assegna alla varabile Cliente i valori
+                 
+                return is;              //ritorna lo stream
+            }
+        }
+    } 
+    return is;
+}

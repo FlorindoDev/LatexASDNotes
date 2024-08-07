@@ -1,0 +1,14 @@
+int x = 10;
+x = 20; // x e' un lvalue
+
+
+int arr[3] = {1, 2, 3};
+arr[0] = 10; // arr[0] e' un lvalue
+
+int y = 30;
+int* ptr = &y;
+*ptr = 40; // *ptr e' un lvalue
+
+int z = 50;
+int& ref = z;
+ref = 60; // ref e' un lvalue

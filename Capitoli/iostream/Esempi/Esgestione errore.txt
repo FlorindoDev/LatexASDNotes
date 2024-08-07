@@ -1,0 +1,10 @@
+int i;
+if(cin>>i){
+    // fa quello che devi
+    } else if(cin.fail()){
+        cin.clear();
+        string s;
+        if(cin>>s){ // vediamo cosa contiene
+            // procedi
+        }
+}

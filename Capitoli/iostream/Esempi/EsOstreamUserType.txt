@@ -1,0 +1,17 @@
+struct Cliente{
+string nome;
+int numero;
+};
+
+ostream& operator<<(ostream& os, const Cliente& e){
+    return os << "{\"" << e.nome << "\"," << e.numero << "}";
+}
+
+int main(){
+    Cliente &c = *(new Cliente);
+    c.nome = 'a';
+    c.numero = 2;
+    cout <<  "C" <<c;  //cominciera' a stampare 
+                        //da sinistra verso destra
+}
+

@@ -1,0 +1,130 @@
+In questo paragrafo raggrupperò tutto quello che c'è da sapere sulle tre prove intercorso
+
+\subsection{Using}
+\textcolor{blue}{\code{\textbf{Using}}} è una \textbf{parola chiave} simile al \code{typedef} ma più versatile , si puo dire che è L'Evoluzione. \textcolor{blue}{\code{\textbf{Using}}} può essere usato per alias a:
+
+\begin{enumerate}
+    \item \textbf{Alias di tipo:} dare un nome a un tipo
+    \begin{tcolorbox}[width=12cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Intercorso/Esempi/Using/UsingTipe.txt}
+    \end{tcolorbox}
+    \item \textbf{Alias per le funzioni}: utilizzato per le funzioni anonime
+    \begin{tcolorbox}[width=14cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Intercorso/Esempi/Using/FunzioniAnonime.txt}
+    \end{tcolorbox}
+    \newpage
+    \item \textbf{Alias di Namespace:} Dare nomi ai Namespace
+    \begin{tcolorbox}[width=14cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Intercorso/Esempi/Using/UsingNameSpace.txt}
+    \end{tcolorbox}
+    \item \textbf{Alias di tamplate:}
+    \begin{tcolorbox}[width=14cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Intercorso/Esempi/Using/UsingTamplate.txt}
+    \end{tcolorbox}
+\end{enumerate}
+
+Quindi abbiamo 4 tipi di alias: \textbf{Tipo, funzioni, Namespace e tamplate}
+\newpage
+\subsection{lvalue e rvalue}
+\subsubsection{lvalue}
+Un \textcolor{blue}{\code{\textbf{lvalue}}} (left value) è un termine utilizzato in \code{C++} per descrivere un'espressione che rappresenta un \textbf{oggetto} che ha \textbf{un'identità} e un \textbf{indirizzo di memoria accessibile}. In altre parole, un \textbf{lvalue} è qualsiasi cosa che possa apparire alla sinistra di un'assegnazione (anche se non è l'unica caratteristica distintiva).\newline\newline
+Caratteristiche di un \textbf{lvalue}:
+\begin{itemize}
+    \item \textbf{Ha un'identità}: Un lvalue rappresenta un oggetto che \textbf{risiede} in una \textbf{posizione} specifica nella \textbf{memoria.}
+    \item \textbf{Può essere modificato}: Un lvalue \textbf{non const} può essere assegnato, quindi può essere modificato.
+    \item \textbf{Può essere preso per riferimento}: Si può ottenere un \textbf{}riferimento a un lvalue.
+\end{itemize}
+
+ \begin{tcolorbox}[width=14cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Intercorso/Esempi/lvalue e rvalue/lvalue.txt}
+\end{tcolorbox}
+\newpage
+\subsubsection{rvalue}
+In \code{C++}, un \textbf{rvalue} (right value) è un termine che descrive un'espressione che rappresenta un valore temporaneo, che non ha un'identità persistente o un indirizzo di memoria specifico. Gli \textbf{rvalue} sono tipicamente valori temporanei che non possono essere assegnati ad altre variabili (non possono essere lvalue).\newline\newline
+Caratteristiche di un \textbf{rvalue}:
+\begin{itemize}
+\item \textbf{Temporaneità:} Gli \textbf{rvalue} sono valori che esistono solo per la \textbf{durata di un'espressione}.  \textbf{Non hanno un indirizzo di memoria stabile} a cui ci si può riferire dopo l'esecuzione dell'espressione.
+\item \textbf{Non modificabili:} Gli rvalue non possono essere assegnati; puoi usarli per ottenere un valore, ma non puoi \textbf{modificarli direttamente}.
+\item \textbf{Utilizzo in Espressioni:} Gli \textbf{rvalue} sono comunemente usati in espressioni matematiche, risultati di funzioni, e valori letterali.
+\end{itemize}
+
+ indichiamo un \textbf{rvalue} con \&\& (es. \code{f(Data \&\& s)} s è un rvalue)
+
+ \begin{tcolorbox}[width=14cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Intercorso/Esempi/lvalue e rvalue/rvalue.txt}
+\end{tcolorbox}
+\newpage
+\subsection{std::move()}
+\textcolor{blue}{\code{\textbf{std::move}}} è una funzione della libreria \textbf{standard di \code{C++}} che effettua il \textbf{cast} di un oggetto a un \textbf{rvalue reference}. Viene utilizzata principalmente per abilitare il trasferimento \textbf{(move)} di risorse da un \textbf{oggetto} a un \textbf{altro} senza \textbf{effettuare una copia}, ottimizzando così le prestazioni e l'efficienza della gestione delle risorse.\newline\newline
+Cosa Fa \textcolor{blue}{\code{\textbf{std::move}}}?
+\begin{itemize}
+    \item \textbf{Cast a rvalue reference:} std::move effettua il \textbf{cast di un lvalue} (un oggetto con un nome e un indirizzo identificabile) a un\textbf{ rvalue reference}. Un \textbf{rvalue reference} è un tipo di riferimento che può essere legato a oggetti temporanei, permettendo l'implementazione delle semantiche di movimento.
+    \item \textbf{Non Sposta Effettivamente:} std::move \textcolor{blue}{\code{\textbf{non sposta}}} effettivamente i dati o risorse; si limita a \textbf{indicare} che l'oggetto \textbf{può essere "spostato"}. L'effettivo spostamento delle risorse avviene nelle funzioni di movimento (\textbf{move constructor o move assignment operator}).\newline
+\end{itemize}
+ \begin{tcolorbox}[width=14cm, boxsep=10pt]
+    \textcolor{blue}{\code{\textbf{NB:}}} Dopo un'operazione di \textbf{movimento}, l'oggetto sorgente è lasciato in uno \textbf{stato valido} ma \textbf{indeterminato}. Deve essere pronto per la distruzione, ma \textbf{non deve} essere usato ulteriormente senza essere \textbf{riassegnato} o \textbf{ricostruito}.\newline
+    \textbf{No std::move su Oggetti Const} non ha senso.
+\end{tcolorbox}
+In sintesi, \textbf{std::move} è uno strumento potente per migliorare l'efficienza del codice \code{C++} consentendo il trasferimento delle risorse invece della loro copia.
+\newpage
+\lstinputlisting{Capitoli/Intercorso/Esempi/lvalue e rvalue/EsempioMove.txt}
+\subsection{Lambada function}
+Una \textbf{funzione lambda}, o \textbf{funzione anonima}, in \code{C++} è una funzione senza nome che può essere definita direttamente nel contesto in cui viene utilizzata. Le funzioni lambda sono state introdotte in C++11 e offrono una sintassi concisa per definire funzioni al volo, specialmente utili quando si lavora con funzioni di \textbf{ordine superiore}(es. fold, map ecc.).\newline\newline
+La sintassi di base per una \textbf{lambda} in \code{C++} è la seguente:\newline\newline
+\code{[ capture ] ( params ) -> return\_type \{ body \}}
+\begin{itemize}
+    \item \textbf{capture:} Specifica quali variabili del contesto circostante la lambda può catturare e utilizzare.
+    \item \textbf{params:} Parametri della funzione lambda, simili a quelli di una funzione normale.
+    \item \textbf{return\_type:} (Opzionale) Il tipo di ritorno della lambda. Se omesso, il compilatore deduce il tipo di ritorno.
+    \item \textbf{body:} Il corpo della funzione lambda.
+\end{itemize}
+\lstinputlisting{Capitoli/Intercorso/Esempi/EsempiLambda.txt}
+\newpage
+\subsection{Problema del Diamante}
+Il \textcolor{blue}{\code{\textbf{Problema del diamante}}} è un problema comune in linguaggi di programmazione orientati agli oggetti che supportano l'ereditarietà multipla, come \code{C++}. Si verifica quando una classe eredita da due classi base che a loro volta ereditano da una stessa classe base comune. Questa situazione può creare ambiguità su quale versione dei membri della classe base comune deve essere utilizzata, poiché esistono più \textbf{"percorsi"} per accedere a quei membri.\newline
+Significa che quando in stanzio un oggetto e devo percorrere la strada verso il padre non saprò che strada percorrere.
+\begin{tcolorbox}[width=14cm, boxsep=10pt]
+    \textbf{Esempio:}
+    \lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/NonVirtual.txt}
+    \begin{itemize}
+        \item \textcolor{blue}{\code{\textbf{In questo esempio}}}, \code{DerivedFinal} eredita da \code{Derived1} e \code{Derived2}, entrambe ereditano da \code{Base}. Se proviamo a chiamare \code{obj.show()}, il compilatore non sa quale versione di \code{show} chiamare, quella ereditata da \code{Derived1} o quella ereditata da \code{Derived2}, perché ci sono due \textbf{percorsi} per arrivare alla funzione \code{show}.
+    \end{itemize}
+\end{tcolorbox}
+\subsubsection{Risoluzione tramite virtual}
+In \code{C++}, possiamo risolvere il \textcolor{blue}{\code{\textbf{Problema del diamante}}} usando \textbf{l'ereditarietà virtuale}. Con \textbf{l'ereditarietà virtuale}, diciamo al compilatore che ci sarà \textbf{una sola copia} della classe \code{base} condivisa tra tutte le classi derivate. \textbf{Questo elimina l'ambiguità}. elimina L'Ambiguità perché ci sarà solo una strada per la classe \code{base}.
+\begin{tcolorbox}[width=14cm, boxsep=10pt]
+    \textbf{Esempio:}
+    \lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/ConVirtual.txt}
+    \begin{itemize}
+        \item \textbf{Ereditarietà Virtuale:} Le classi \code{Derived1} e \code{Derived2} ereditano da \code{Base} usando \textcolor{blue}{\code{\textbf{virtual public Base}}}. Questo indica che \code{Base} deve essere condivisa tra tutte le \textbf{classi derivate} che utilizzano \textbf{l'ereditarietà virtuale}.
+        \item \textbf{Ambiguità Risolta}: Ora, \code{DerivedFinal} ha una singola copia di \code{Base},\textbf{ eliminando l'ambiguità}. La chiamata a \code{obj.show()} funziona correttamente.
+    \end{itemize}
+\end{tcolorbox}\newpage
+Quindi quando noi instanziamo una \textbf{classe} verrà instanziato anche la \textbf{classe} \textbf{padre}. Nel \textcolor{blue}{\code{\textbf{Problema del diamante}}} avevamo che una classe ereditava da due classi che avevano due istanze diverse della stessa classe padre(cioè \code{Base}). mettendo \textbf{virtual} usiamo la stessa istanza per entrambi.
+\subsubsection{Quando usare l'Ereditarietà Virtual?}
+L'ereditarietà virtuale è utile quando:
+\begin{enumerate}
+    \item \textbf{Si ha una gerarchia di classi con ereditarietà multipla}: Specialmente se si prevede che più percorsi di ereditarietà possano portare alla stessa classe base.
+    \item  \textbf{Si desidera evitare copie multiple della stessa classe base}: Questo riduce il consumo di memoria e previene ambiguità.
+\end{enumerate}
+\newpage
+\subsubsection{Funzionamento Tecnico}
+Quando una classe \textbf{eredita un'altra classe in modo virtuale} oppure la classe che stiamo estendendo \textbf{contiene metodi virtuali} oppure la stessa classe contiene metodi virtuali allora abbiamo i seguenti tre componenti:
+\begin{itemize}
+    \item \textbf{vptr (puntatore alla tabella dei metodi virtuali)}: Ogni oggetto che contiene almeno un \textbf{metodo virtuale} (o \textbf{eredita} da una \textbf{classe con metodi virtuali}) ha un \textbf{vptr}. Questo \textbf{vptr} punta alla \textbf{vtable della classe stessa}.
+
+    \item \textbf{vtable (tabella dei metodi virtuali)}: La \textbf{vtable} è una struttura dati globale per ogni classe che ha almeno un metodo virtuale. \textbf{Contiene i puntatori} ai metodi virtuali definiti per quella classe e per le sue classi base(da cui ha ereditato). Nel caso di un \textbf{OverRiding} il puntatore non punterà più a un metodo ereditato ma al metodo che lui stesso a fatto \textbf{L'override}. \textbf{vtable} non è una struttura dati globale nel senso che è condivisa tra tutte le istanze di quella classe. Ogni istanza della classe ha il proprio \textbf{vptr (puntatore alla vtable)}, che punta alla \textbf{vtable} specifica della classe stessa. vtable risolve le chimate a funzione quando c'è di mezzo metodi \textbf{virtual}.
+
+    \item \textbf{Offset}: Gli \textbf{offset} per l'accesso alle classi base(quelle ereditate) \textbf{ereditate virtualmente} non sono direttamente memorizzati nella \textbf{vtable}. Questi \textbf{offset} sono \textbf{calcolati} dal \textbf{compilatore} e gestiti internamente per determinare l'indirizzo corretto dell'oggetto della classe base all'interno di un oggetto della classe derivata. Quindi nello \textbf{spazio} di \textbf{indirizzi logici} di un \textbf{istanza di una classe} risiede un \textbf{riferimento} per ogni \textbf{istanza di classe padre(classi da cui eredita)}, cosi facendo se più classi ereditano dalla stessa \textbf{non si crea ambiguità e ridondanza}, Quindi ci sarà un unica istanza per tutte L'istanze delle classi figlio. Per \textbf{raggiungere} questo riferimento \textbf{si usa l'offset}, quindi sommando \textbf{l'offset al indirizzo di base del oggetto ottengo il riferimento all'istanza della classe padre.}
+\end{itemize}
+\newpage
+\subsubsection{Esempi:}
+\lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/CodiceEsempio.txt}
+\newpage
+\lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/vtable1.txt}
+Se togliessimo \textbf{foo} da D avremmo:
+\lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/vtable2.txt}
+c'è \textbf{B} è non \textbf{C} poiché viene risolto prima \textbf{B} e poi \textbf{C} , questo perché \textbf{B} è stato scritto prima quindi in ordine di compilazione \textbf{B} viene risolto prima.
+\newpage
+\lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/CodiceEsempio2.txt}
+\lstinputlisting{Capitoli/Intercorso/Esempi/Diamante/vtableEs2.txt}

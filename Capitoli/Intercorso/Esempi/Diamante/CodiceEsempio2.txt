@@ -1,0 +1,52 @@
+#include <iostream>
+
+// Classe base con un metodo virtuale
+class A {
+public:
+    virtual void foo() {
+        std::cout << "Chiamato foo() di A" << std::endl;
+    }
+    virtual void bar() {
+        std::cout << "Chiamato bar() di A" << std::endl;
+    }
+};
+
+// Classe B che eredita virtualmente da A
+class B : public virtual A {
+public:
+    void foo() override {
+        std::cout << "Chiamato foo() di B" << std::endl;
+    }
+};
+
+// Classe C che eredita virtualmente da A
+class C : public virtual A {
+public:
+    void bar() override {
+        std::cout << "Chiamato bar() di C" << std::endl;
+    }
+};
+
+// Classe D che eredita virtualmente da B e C
+class D : public B, public C {
+public:
+    void foo() override {
+        std::cout << "Chiamato foo() di D" << std::endl;
+    }
+    void bar() override {
+        std::cout << "Chiamato bar() di D" << std::endl;
+    }
+};
+
+int main() {
+    D d;
+
+    // Puntatore a D come classe base A
+    A* ptrA = &d;
+
+    // Chiamata ai metodi virtuali tramite il puntatore di tipo A
+    ptrA->foo(); // Chiamato foo() di D
+    ptrA->bar(); // Chiamato bar() di D
+
+    return 0;
+}

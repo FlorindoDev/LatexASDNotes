@@ -1,0 +1,27 @@
+vtable per A:
+|------------|    
+| A::foo     | ----> Puntatori ai metodi virtuali di A
+|------------|     
+| A::bar     | ----> Puntatori ai metodi virtuali di A
+|------------|
+
+vtable per B:
+|------------|
+| B::foo     | ----> Puntatore al metodo foo() di B
+|------------|
+| A::bar     | ----> Puntatore al metodo bar() di A
+|------------|
+
+vtable per C:
+|------------|
+| A::foo     | ----> Puntatore al metodo foo() di A
+|------------|
+| C::bar     | ----> Puntatore al metodo bar() di C
+|------------|
+
+vtable per D:
+|------------|
+| D::foo     | ----> Puntatore al metodo foo() di D
+|------------|
+| D::bar     | ----> Puntatore al metodo bar() di D
+|------------|

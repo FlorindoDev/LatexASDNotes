@@ -1,0 +1,15 @@
+using NewTypeName = ExistingTypeName; //caso generale
+
+#include <iostream>
+#include <vector>
+
+// Alias di tipo per un vettore di interi
+using IntVector = std::vector<int>;
+
+int main() {
+    IntVector vec = {1, 2, 3, 4, 5};
+    for (int n : vec) {
+        std::cout << n << ' ';
+    }
+    return 0;
+}

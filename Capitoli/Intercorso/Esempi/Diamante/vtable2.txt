@@ -1,0 +1,19 @@
+vtable di A:
++---------+
+| A::foo  |
++---------+
+
+vtable di B:
++---------+
+| B::foo  |
++---------+
+
+vtable di C:
++---------+
+| C::foo  |
++---------+
+
+vtable di D:
++---------+
+| B::foo  |  <-- Risolve la chiamata a `foo`
++---------+

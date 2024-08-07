@@ -1,0 +1,85 @@
+\begin{itemize}
+    \item \textbf{iostram} è libreria standard permette di formattare i caratteri in 
+    \item \textbf{input} e in \textbf{output}.
+    \item Le operazioni di input sono tipizzate ed estendibili cosi permettendo di gestire i tipi definiti dall'utente.
+    \item Altri tipi di interazione con l’utente (grafico, ad esempio)
+    non sono inclusi nello standard \textbf{ISO}(International Organization for Standardization) e quindi nemmeno in  questa libreria. \textbf{ISO} è un organizzazione di standardizzazione, per non creare anarchia.
+\end{itemize}
+\subsection{Output}
+\begin{itemize}
+    \item  Un \textbf{ostream} converte un oggetto con tipo in uno \textbf{stream} di
+    caratteri (bytes).
+    \item  Si può costruire l’output per ogni tipo definito dall’utente.
+    \item  Operatore \textcolor{blue}{\code{<<}} (“Output”) definito per tutti gli oggetti di tipo \textbf{ostream} (es: lo standard output \code{cout}, lo standard error
+    \code{cerr}, non bufferizzato o \code{clog}, bufferizzato).
+    \item  Per default, i valori scritti su uno stream di uscita sono
+    convertiti in una sequenza di caratteri
+    \item  esempio: l’intero 10 sarà convertito nella sequenza ’1’,’0’.
+    \item  Ogni operazione di \textcolor{blue}{\code{<<}} restituisce lo stream, di modo da
+    poter concatenare diverse operazioni
+    \lstinputlisting{Capitoli/iostream/Esempi/EsmpioOS.txt}
+    \item Un carattere che viene convertito ad intero sarà convertito nella nel valore della tabella ASCII.
+    \begin{tcolorbox}[width=15cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/iostream/Esempi/CharToInt.txt}
+        \textcolor{blue}{NB:} \code{'b'} sarà convertito un ASCII quindi l'out sarà \textcolor{blue}{\code{a98c}}
+    \end{tcolorbox}
+\end{itemize}
+\subsection{Input}
+\begin{itemize}
+    \item  Un \code{istream} converte uno stream di caratteri in oggetti
+    con tipo.
+    \item \code{istream} per input di tipi \code{built-in}, estendibile a tipi definiti
+    dall’utente.
+    \item Operatore \textcolor{blue}{\code{>>}} (“metto in”) definito sugli oggetti di tipo
+    istream, tra cui \code{cin}.
+    \item Il tipo dell’operando a destra di \textcolor{blue}{\code{>>}} determina:
+    \begin{itemize}
+        \item quale ingresso accetta;
+        \item l’obiettivo dell’operazione.
+    \end{itemize}
+    \lstinputlisting{Capitoli/iostream/Esempi/EsIS.txt}
+    \item Per leggere una sequenza di caratteri useremo \textcolor{blue}{\code{string}};
+    tuttavia la lettura si ferma al primo carattere non
+    alfanumerico:
+    \lstinputlisting{Capitoli/iostream/Esempi/EsString.txt}
+    \item  Per leggere un’intera linea dobbiamo usare \code{getline()}
+    (vedi esempio)
+    \item  Per leggere un solo carattere \code{get()}
+\end{itemize}
+\subsection{iostream User-Defined Types}
+\begin{itemize}
+    \item La libreria \code{iostream} permette di definire operazioni di I/O
+    per i tipi definiti dall’utente
+    \subsubsection{\textbf{\textcolor{blue}{Esmpio con Stream di output}}}
+    \lstinputlisting{Capitoli/iostream/Esempi/EsOstreamUserType.txt}
+    \item Nella definizione dell’operatore \textcolor{blue}{\code{<<}} per il nuovo tipo, lo
+    stream di uscita
+    \item viene preso, per riferimento, come primo argomento
+    \item viene restituito come risultato
+    \newpage
+    \subsubsection{\textbf{\textcolor{blue}{Esmpio con Stream di Input}}}
+    \lstinputlisting{Capitoli/iostream/Esempi/EsIS2.txt}
+\end{itemize}
+\newpage
+\subsection{Errori iostream}
+\begin{itemize}
+    \item Un iostream si può trovare in uno tra quattro stati:
+    \begin{itemize}
+        \item \textbf{\textcolor{blue}{\code{good()}}} : la precedente operazione di \textbf{iostream} ha avuto successo\newline
+        \item \textbf{\textcolor{blue}{\code{eof()}}} : arrivati alla fine dell’ingresso \textbf{(“end-of-file”)}\newline
+        \item \textbf{\textcolor{blue}{\code{fail()}}} : qualcosa di inaspettato (per esempio, mi ha aspetta una cifra e ho trovato un carattere\newline
+        \item \textbf{\textcolor{blue}{\code{bad()}}} : qualcosa di seriamente inaspettato (ad
+        esempio, un errore nella lettura del disco)
+    \end{itemize}
+    \item Qualsiasi operazione venga tentata su di uno stream che
+    non termina con uno stato \code{good()} non ha nessun effetto.
+    \item Un iostream può venire usato come condizione: \code{true}
+    solo se si trova nello stato \code{good()}
+    \item Dopo un errore di lettura, per pulire lo stream e procedere:
+    \lstinputlisting{Capitoli/iostream/Esempi/Esgestione errore.txt}
+    \item  In alternativa, possiamo usare le eccezioni . . .    
+\end{itemize}
+
+
+
+%\lstinputlisting{Capitoli/iostream/Esempi/}

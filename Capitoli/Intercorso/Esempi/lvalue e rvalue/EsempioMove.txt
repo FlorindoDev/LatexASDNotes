@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <utility> // Include std::move
+
+class MyClass {
+public:
+    std::string data;
+
+    // Costruttore
+    MyClass(const std::string& str) : data(str) {
+        std::cout << "Constructed with data: " << data << std::endl;
+    }
+
+    // Move constructor
+    MyClass(MyClass&& other) noexcept : data(std::move(other.data)) {
+        std::cout << "Move constructed with data: " << data << std::endl;
+    }
+
+    // Move assignment operator
+    MyClass& operator=(MyClass&& other) noexcept {
+        if (this != &other) {
+            data = std::move(other.data);
+            std::cout << "Move assigned with data: " << data << std::endl;
+        }
+        return *this;
+    }
+
+    // Prevent copy
+    MyClass(const MyClass&) = delete;
+    MyClass& operator=(const MyClass&) = delete;
+};
+
+int main() {
+    MyClass obj1("Hello");
+    MyClass obj2 = std::move(obj1); // Uses move constructor
+
+    MyClass obj3("World");
+    obj3 = std::move(obj2); // Uses move assignment operator
+
+    return 0;
+}

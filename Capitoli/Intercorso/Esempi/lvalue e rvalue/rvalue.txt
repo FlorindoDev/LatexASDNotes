@@ -1,0 +1,11 @@
+int x = 10; // 10 e' un rvalue
+
+int y = x + 5; // x + 5 e' un rvalue
+
+ // "hello" + std::string("world") e' un rvalue
+std::string s = "hello" + std::string("world");
+
+int getValue() {
+    return 42;
+}
+int z = getValue(); // getValue() e' un rvalue

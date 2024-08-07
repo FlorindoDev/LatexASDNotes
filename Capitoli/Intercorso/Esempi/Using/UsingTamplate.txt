@@ -1,0 +1,5 @@
+template <typename T>
+using Vec = std::vector<T>;
+
+Vec<int> intVec = {1, 2, 3};
+Vec<double> doubleVec = {1.1, 2.2, 3.3};

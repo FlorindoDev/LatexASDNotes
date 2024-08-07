@@ -1,0 +1,50 @@
+//ES 1
+//mettiamo auto poiche' la funzione e' un tipo complesso
+//quindi lasciamo il compito al compilatore
+auto sum = [](int a, int b) {
+    return a + b;
+};
+
+int result = sum(3, 4); // result e' 7
+
+
+//ES 2
+int x = 10;
+int y = 20;
+
+auto add = [x, y]() {
+    return x + y;
+};
+
+int result = add(); // result e' 30
+
+
+//ES 3
+int x = 10;
+
+auto increment = [&x]() {
+    x += 1;
+};
+
+increment(); // x e' ora 11
+
+
+
+
+
+//ES 4
+include <iostream>
+
+int main() {
+    // Definizione di una lambda che calcola la media di due interi
+    auto average = [](int a, int b) -> double {
+        return (a + b) / 2.0;
+    };
+
+    // Utilizzo della lambda per calcolare la media di 4 e 7
+    double result = average(4, 7);
+
+    std::cout << "La media di 4 e 7 e': " << result << std::endl; // Output: La media di 4 e 7 e': 5.5
+
+    return 0;
+}
