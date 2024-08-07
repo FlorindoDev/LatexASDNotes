@@ -1,0 +1,11 @@
+// alloca un int, senza inizializzarlo
+int* p1=new int;
+
+// alloca 100 interi senza inizializzarli
+int* p2=new int[100]
+
+// dealloca singoli oggetti
+delete p1;
+
+// dealloca un array
+delete[] p2;

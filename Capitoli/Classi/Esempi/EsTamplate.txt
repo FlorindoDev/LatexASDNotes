@@ -1,0 +1,23 @@
+// Funzione template per lo scambio di due valori di tipo generico
+template <typename T>
+void scambia(T& a, T& b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    // Esempio di utilizzo della funzione scambia con interi
+    int x = 5, y = 10;
+    std::cout << "Prima dello scambio: x = " << x << ", y = " << y << std::endl;
+    scambia(x, y);
+    std::cout << "Dopo lo scambio: x = " << x << ", y = " << y << std::endl;
+
+    // Esempio di utilizzo della funzione scambia con double
+    double a = 3.14, b = 6.28;
+    std::cout << "Prima dello scambio: a = " << a << ", b = " << b << std::endl;
+    scambia(a, b);
+    std::cout << "Dopo lo scambio: a = " << a << ", b = " << b << std::endl;
+
+    return 0;
+}

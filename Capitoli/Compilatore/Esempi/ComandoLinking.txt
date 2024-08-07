@@ -1,0 +1,1 @@
+g++ file1.o fil2.o -o nomefile

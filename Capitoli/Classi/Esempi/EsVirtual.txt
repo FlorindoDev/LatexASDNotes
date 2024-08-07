@@ -1,0 +1,17 @@
+// Classe base
+class Base {
+public:
+    // Funzione virtuale
+    virtual void stampa() {
+        std::cout << "Stampa dalla classe Base" << std::endl;
+    }
+};
+
+// Classe derivata
+class Derivata : public Base {
+public:
+    // Sovrascrittura della funzione virtuale
+    void stampa() override {
+        std::cout << "Stampa dalla classe Derivata" << std::endl;
+    }
+};

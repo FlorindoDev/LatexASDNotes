@@ -1,0 +1,182 @@
+\textbf{Una classe} può essere descritta brevemente come:
+\begin{itemize}
+    \item \textbf{La classe} è un tipo definito dal utente(user-defined type)
+    \item  \textbf{Una classe} consiste in membri:
+    \begin{itemize}
+        \item \textbf{\textcolor{blue}{Metodi}} (function member)
+        \item \textbf{\textcolor{blue}{Attribuiti}} (Data member)
+    \end{itemize}
+    \item \textbf{I metodi} possono definire varie \textbf{funzionalità} come L'Inizializzazione(costruttore) , la copia, la pulizia (distruttore) ecc.
+\end{itemize}
+\textbf{\textcolor{blue}{Alcune caratteristiche sono:}}
+\begin{itemize}
+    \item Attributi e metodi si possono richiamare con \textbf{\textcolor{blue}{\code{.}}}(dot) per i \textbf{puntatori} con \textbf{\textcolor{blue}{\code{->}}}(arrow)
+    \item gli \textcolor{blue}{\textbf{operatori}} come \textcolor{blue}{\textbf{\code{+}}},\textcolor{blue}{\textbf{\code{!}}} e \textcolor{blue}{\textbf{\code{[]}}} possono essere ridefiniti
+    \item La classe è un \textcolor{blue}{\textbf{\code{namespace}}} che contiene i Membri(meber)
+    \item \textbf{Le classi} offrono anche una \textbf{visibilità} dei loro membri tramite le seguenti parole chiavi:
+    \begin{itemize}
+        \item \textbf{\textcolor{blue}{\code{private}:}} Visibile solo nella classe di definizione.
+        \item \textbf{\textcolor{blue}{\code{protected}:}} visibile anche ai figli.
+        \item \textbf{\textcolor{blue}{\code{public}:}} visibile a tutti.
+    \end{itemize}
+    \item Senza un \textbf{esplicita} definizione di \textbf{visibilità} sarà di \textbf{defualt} public
+    \lstinputlisting{Capitoli/Classi/Esempi/EsClassi.txt}
+\end{itemize}
+\begin{tcolorbox}[width=12cm, boxsep=10pt]
+    Cos'è il \textcolor{blue}{\textbf{namespace}}? è un blocco di codice con un nome
+    \lstinputlisting{Capitoli/Classi/Esempi/Namespace.txt}
+    \textbf{Come si utilizza ?}
+    \lstinputlisting{Capitoli/Classi/Esempi/Namespace3.txt}
+    \textbf{Perché usarlo?}
+    Si utilizza perché ci potrebbero essere delle stesse funzioni col lo stesso nome ma inserendole in \textcolor{blue}{\textbf{namespace}} diversi non andremo in conflitto, basterà specificare il \textcolor{blue}{\textbf{namespace}} a cui si fa riferimento.      
+\end{tcolorbox}
+\newpage
+\textcolor{blue}{\textbf{Copia di un oggetto(istanza della classe):}}\newline\newline
+Per default gli oggetti possono venir copiati: quindi un’istanza di una classe può venir inizializzata con con una copia di un’altra istanza.
+\begin{tcolorbox}[width=12cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Classi/Esempi/EsCopia.txt}
+    \textbf{\textcolor{blue}{NB:}} d1 è una copia del istanza  di nome \code{my\_birthday}
+\end{tcolorbox}
+\begin{itemize}
+    \item \textbf{Per default}, la copia di un oggetto corrisponde alla copia di
+    ogni singolo membro.
+    \item Se si vuole che il \textbf{comportamento} sia diverso da questo, è
+    necessario \textbf{definire} opportunamente la \textbf{classe}.
+    \item Questo naturalmente vale anche per le \textbf{istanze} di una
+    classe: l’assegnamento significa la copia \textbf{dell’istanza}.
+    \item Anche qui, copia significa copia di ogni singolo membro,
+    ma se si vuole un comportamento diverso basta ridefinire
+    l’operatore di assegnamento.
+\end{itemize}
+\newpage
+\subsection{Costruttore}
+Utilizzare init e poco elegante e soggetta ad errori per questo motivo ci sono \textbf{\textcolor{blue}{costruttori}} sono dei metodi che hanno lo stesso nome della classe. \textbf{Il costruttore} impone delle \textbf{invarianti di classe} che tutte le \textbf{istanze} di quella classe devono avere. se questa proprietà non viene rispettata sarà \textbf{lanciata un eccezione}.
+\begin{tcolorbox}[width=12cm, boxsep=10pt]
+   \lstinputlisting{Capitoli/Classi/Esempi/Costruttore.txt}
+    \textbf{\textcolor{blue}{NB:}} è consigliabile inzializare con le parentesi \textbf{\textcolor{blue}{\code{\{\}}}} invece di \textbf{\textcolor{blue}{\code{()}}} per i motivi descritti in \textbf{\hyperlink{init}{Inizializzazione(2.2, clicca)}} 
+\end{tcolorbox}
+\begin{itemize}
+    \item Di solito abbiamo più costruttori, con \textbf{signature} diverse tramite \textbf{l'overloading}.
+    \item  \textbf{\textcolor{blue}{L’overloading}} può essere fatto purché numero e/o tipo dei
+    parametri sia diverso.
+    \item  Per non esagerare nel numero di parametri si può utilizzare il valore di default per uno o più parametri.
+\end{itemize}
+    \begin{tcolorbox}[width=12cm, boxsep=10pt]
+        \lstinputlisting{Capitoli/Classi/Esempi/EsClassi2.txt} 
+        \begin{itemize}
+            \item Un \textbf{costruttore} può tuttavia inizializzare \textbf{uno o più} attributi
+            \item dopo aver usato il primo \textbf{costruttore} il valore di d è \code{dd}, mentre \code{m} e \code{y} valgono rispettivamente \code{today.m} e \code{today.y}
+            \item in questo esempio in oltre \code{d, m, y} sono già inizializzati di default
+        \end{itemize}
+        
+    \end{tcolorbox}
+    
+\newpage
+\subsection{Definizione metodi}
+\begin{itemize}
+    \item  Due \textbf{possibilità} per i metodi:
+    \begin{enumerate}
+        \item \textbf{Dichiararli} dentro definizione della classe e \textbf{definirli} fuori.
+        \item \textbf{Dichiararli} e \textbf{definirli} dentro la definizione della classe.
+    \end{enumerate}
+
+    \item \textbf{Preferibile il primo}, salvo che il metodo \textbf{sia piccolo},
+    modificato raramente e usato spesso: infatti viene
+    considerato come \code{inline}.
+    \item Ogni membro della classe può accedere a qualsiasi altro
+    membro della classe indipendentemente da dove è stato
+    definito: in altre parole, dichiarazione e definizione dei
+    membri di una classe non dipendono dall’ordine.
+\end{itemize}
+\lstinputlisting{Capitoli/Classi/Esempi/EsClassi3.txt} 
+\subsection{inline}
+La \textbf{\textcolor{blue}{inline}} parola chiave suggerisce che il \textbf{compilatore} sostituisce il codice all'interno della \textbf{definizione} della funzione al posto di ogni \textbf{chiamata a tale funzione}.\newline\newline
+l'uso di funzioni \textbf{\textcolor{blue}{inline}} può rendere il programma più veloce perché eliminano il sovraccarico associato alle \textbf{chiamate di funzione}. La chiamata a una funzione richiede il \textbf{push} dell'indirizzo restituito nello \textbf{stack}, il \textbf{push} degli argomenti nello \textbf{stack}, il passaggio al corpo della funzione e l'esecuzione di un'istruzione\textbf{return} al termine della funzione. Questo processo viene eliminato tramite \textbf{\textcolor{blue}{l'inlining}} della funzione.
+\lstinputlisting{Capitoli/Classi/Esempi/Esinline.txt} 
+\newpage
+\subsection{Funzioni costanti}
+\begin{itemize}
+    \item Si può aggiungere ai metodi la parola chiave per
+    sottolineare che si tratta di metodi che non vanno a
+    modificare lo stato dell’oggetto.
+    \lstinputlisting{Capitoli/Classi/Esempi/EsConst.txt} 
+    \item La parola chiave \code{const} è \textbf{obbligatoria} anche quando il
+    metodo viene definito fuori della classe: fa parte della
+    \textbf{signature} del metodo.
+    \item  Se l’oggetto è costante, non permette l’invocazione di
+    metodi non dichiarati come costanti!
+    \item  Un metodo costante, ovviamente, può venire invocato
+    anche su oggetti non costanti.
+\end{itemize}
+\subsection{Static}
+\begin{itemize}
+    \item Le classi possono contenere membri dati \textbf{\textcolor{blue}{\code{statici}}} e funzioni membro \textbf{\textcolor{blue}{\code{statiche}}}. Quando un membro dati viene dichiarato come \textbf{\textcolor{blue}{\code{static}}}, viene mantenuta una sola copia dei dati per tutti gli oggetti della classe .
+    
+    \item  Vale sia per gli \textbf{attributi}, che per \textbf{i metodi} (che, ad esempio,
+    vanno a modificare gli attributi statici).
+
+    \item I membri dati \textbf{\textcolor{blue}{\code{statici}}} non fanno parte degli oggetti di un tipo \textbf{specifico} della \textbf{classe}. Di  conseguenza, la dichiarazione di un membro dati statico non è considerata una definizione. Il membro dati viene dichiarato \textbf{nell'ambito della classe}, ma la definizione viene fatta \textbf{nell'ambito del file}. Questi membri \textbf{\textcolor{blue}{\code{statici}}} hanno collegamento esterno. L'esempio seguente illustra questi concetti.
+    \newpage
+    \lstinputlisting{Capitoli/Classi/Esempi/EsStatic.txt}
+    \item Nel codice precedente, il membro \code{bytecount} è dichiarato nella classe \code{BufferedOutput}, ma deve essere definito all'esterno della dichiarazione della classe.
+
+    \item \textbf{Ai membri} dati \textbf{\textcolor{blue}{\code{statici}}} è possibile accedere senza fare riferimento a un oggetto di tipo classe. Il numero di \textbf{byte} scritti utilizzando oggetti \code{BufferedOutput} può essere ottenuto come segue:
+    \lstinputlisting{Capitoli/Classi/Esempi/EsStatic2.txt}
+\end{itemize}
+\newpage
+\subsection{Distruttore}
+È importante \textbf{controllare} che tutte le risorse vengano \textbf{rilasciate}. \newline Questo è tra i compiti del \textbf{distruttore}.\newline
+Il distruttore ha lo stesso nome della classe ma prima del nome ha \textbf{\textcolor{blue}{\code{\~}}}(tilde)
+\begin{itemize}
+    \item  Il distruttore viene chiamato
+    \begin{itemize}
+        \item \textbf{\textcolor{blue}{implicitamente}} quando l’oggetto esce dal suo ambito di definizione(\textbf{scope})
+        \item \textbf{\textcolor{blue}{esplicitamente}} con \textbf{\code{delete}}
+    \end{itemize}
+\end{itemize}
+\begin{tcolorbox}[width=12cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Classi/Esempi/EsDist.txt}    
+\end{tcolorbox}
+\newpage
+\subsection{Ereditarietà o sottoclassi}
+Per indicare che \code{Employee} è una superclasse di Manager:
+\lstinputlisting{Capitoli/Classi/Esempi/Essuperclasse.txt}
+\begin{itemize}
+    \item Costruzione \textbf{bottom-up} (dalla classe base verso le derivate) e distruzione \textbf{top-down} (in senso inverso).
+    \item I \textbf{costruttori} \textbf{non vengono} automaticamente ereditati
+    (devono cambiare per forza di cose!)
+\end{itemize}
+\subsection{Virtual}
+\begin{itemize}
+    \item Il \textcolor{blue}{\code{virtual}} permette di \textbf{ridefinire} un metodo nelle proprie \textbf{sottoclassi}. \textcolor{blue}{\code{virtual}} serve per creare un \textbf{interfaccia} cioè una struttura comune tra tutte le \textbf{classi} che la estenderanno. Visionando questa \textbf{interfaccia} possiamo sapere che metodi implementa una certa classe che estende questa \textbf{interfaccia}. questo concetto si rafforza quando la classe è \textbf{astratta}
+    \item Aggiungere la pseudo inizializzazione \textcolor{blue}{\code{= 0}} a un \textbf{metodo} lo farà diventare un  \textcolor{blue}{\code{pure virtual}} (non ha implementazione e deve essere quindi ridefinito).
+    \item Una classe con una o più metodi virtuali puri si dice
+    \textcolor{blue}{\code{astratta}}: non si possono creare oggetti di una \textbf{classe astratta}.
+    \item  Se invece si aggiunge \textcolor{blue}{\code{final}} dopo la dichiarazione quel
+    metodo non può più venir ridefinito.
+    \item Se una classe è \textbf{\textcolor{blue}{Astratta}} quindi ha almeno un \code{Virtual} puro , allora ogni classe che la estende dovrà avere un implementazione per ogni metodo virtual puro
+    \lstinputlisting{Capitoli/Classi/Esempi/EsVirtual.txt}
+    \item quando si usa \textcolor{blue}{\code{virtual}} e si implementa un metodo deve essere molto breve è semplice.
+    \item Se dichiari un metodo \textbf{senza virtual}, le classi derivate possono comunque definire un metodo con lo stesso nome. Tuttavia, la chiamata al metodo dipenderà dal tipo del puntatore o della referenza utilizzata per fare la chiamata, non dal tipo dell'oggetto a cui il puntatore o la referenza puntano.
+    \item Dichiarare il \textbf{metodo come virtual} consente il polimorfismo, ovvero il comportamento in cui la chiamata al metodo è determinata dal tipo effettivo dell'oggetto a cui il puntatore o la referenza puntano.
+    
+\end{itemize}
+\newpage
+\subsection{Template}
+\lstinputlisting{Capitoli/Classi/Esempi/EsTamplate.txt}
+\begin{itemize}
+    \item in questo caso il \textbf{compilatore} quando andremo  a inserire i parametri\textbf{attuali} andrà a sostituire a \textcolor{blue}{\code{T}} il tipo corretto rispetto al \textbf{tipo} del parametro attuale.
+    \item Un tipo o un valore diventa un parametro nella definizione di una classe, una funzione o un alias di tipo.
+\end{itemize}
+\newpage
+\begin{tcolorbox}[width=16cm, boxsep=10pt]
+    \lstinputlisting{Capitoli/Classi/Esempi/EsTamplate2.txt}
+    \textcolor{blue}{\code{NB:}} Tra \textcolor{blue}{\code{<>}} andremo a indicare i tipi che dovranno essere sostituiti al interno della classe
+\end{tcolorbox}
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+while(/* ... */){
+    Msg *p = create();
+    // ...
+    Node *n1 = new Node;
+    // ...
+    delete p;
+    Node *n2 = new Node;
+}

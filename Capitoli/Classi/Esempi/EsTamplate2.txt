@@ -1,0 +1,37 @@
+// Definizione della classe template Pair
+template <typename T1, typename T2>
+class Pair {
+private:
+    T1 first;
+    T2 second;
+
+public:
+    // Costruttore
+    Pair(const T1& f, const T2& s) : first(f), second(s) {}
+
+    // Metodo per ottenere il primo elemento della coppia
+    T1 getFirst() const {
+        return first;
+    }
+
+    // Metodo per ottenere il secondo elemento della coppia
+    T2 getSecond() const {
+        return second;
+    }
+};
+
+int main() {
+    // Creazione di una coppia di interi e una coppia di double
+    Pair<int, double> pair1(10, 3.14);
+    Pair<std::string, char> pair2("hello", 'A');
+
+    // Stampare i valori della coppia di interi
+    std::cout << "Primo valore di pair1: " << pair1.getFirst() << std::endl;
+    std::cout << "Secondo valore di pair1: " << pair1.getSecond() << std::endl;
+
+    // Stampare i valori della coppia di stringa e char
+    std::cout << "Primo valore di pair2: " << pair2.getFirst() << std::endl;
+    std::cout << "Secondo valore di pair2: " << pair2.getSecond() << std::endl;
+
+    return 0;
+}

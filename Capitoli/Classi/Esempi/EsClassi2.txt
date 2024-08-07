@@ -1,0 +1,13 @@
+class Date{
+    int d {today.d};
+    int m {today.m};
+    int y {today.y};
+    public :
+        Date(int dd):d{dd} { 
+            // controlla se la data e' valida 
+        }
+        //overloading
+        Date(int dd, int ddd):d{dd} :m{ddd}{ 
+            // controlla se la data e' valida 
+        }
+}

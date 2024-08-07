@@ -1,0 +1,20 @@
+namescpace lasd{
+    int X(int i){
+        \\codice
+    }
+    
+}
+
+namescpace Prova{
+    int X(int i){
+        \\codice
+    }
+    
+}
+
+int main(){
+    
+    lasd::X(1);    //richiama X di lasd
+    Prova::X(1); //richiama X di prova
+    return 0;
+}

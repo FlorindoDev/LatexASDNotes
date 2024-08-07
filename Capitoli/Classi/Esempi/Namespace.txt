@@ -1,0 +1,8 @@
+namescpace lasd{
+    \\codice
+}
+
+Class X{
+    \\codice
+}
+

@@ -1,0 +1,5 @@
+// alloca un int e lo inizializza a 7
+int* p3=new int(7);
+
+// dealloca singoli oggetti
+delete p3;

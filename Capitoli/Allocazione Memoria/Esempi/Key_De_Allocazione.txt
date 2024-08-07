@@ -1,0 +1,3 @@
+new            //per creare un oggetto
+delete      //per distruggerlo
+delete[ ] //se si tratta di un array

@@ -1,0 +1,33 @@
+// account.h
+class Account
+{
+public:
+    Account(double initial_balance)
+    {
+        balance = initial_balance;
+    }
+
+    double GetBalance() const;
+    double Deposit(double amount);
+    double Withdraw(double amount);
+
+private:
+    double balance;
+};
+
+inline double Account::GetBalance() const
+{
+    return balance;
+}
+
+inline double Account::Deposit(double amount)
+{
+    balance += amount;
+    return balance;
+}
+
+inline double Account::Withdraw(double amount)
+{
+    balance -= amount;
+    return balance;
+}

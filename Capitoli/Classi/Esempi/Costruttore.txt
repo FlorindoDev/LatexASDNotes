@@ -1,0 +1,15 @@
+class Date {
+    int d, m, y;
+    public:
+        Date(int dd, int mm, int yy); // constructor
+        // ...
+};
+
+Date today = Date(23,6,1983);
+Date xmas(25,12,1990); // abbreviated for m
+Date my_bir thday; // error : initializer missing
+Date release1_0(10,12); // error : third argument missing
+
+Date today = Date {23,6,1983};
+Date xmas {25,12,1990}; // abbreviated for m
+Date release1_0 {10,12}; // error : third argument missing

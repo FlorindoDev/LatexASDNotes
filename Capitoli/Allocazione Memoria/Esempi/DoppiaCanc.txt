@@ -1,0 +1,8 @@
+void sloppy(){
+int* p=new int[1000];
+// usa *p ...
+delete[] p;
+// ... Altro o attesa ...
+delete[] p;
+// la funzione non possiede *p!
+}

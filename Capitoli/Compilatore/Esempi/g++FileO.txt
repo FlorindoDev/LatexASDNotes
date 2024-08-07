@@ -1,0 +1,3 @@
+g++ -c eseguibile_sorgente.cpp
+
+g++ -c eseguibile_sorgente.cpp -o nomefile

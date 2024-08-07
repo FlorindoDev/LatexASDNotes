@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{sourcecodepro}
+\usepackage{tikz} %copertina
+\usetikzlibrary{shapes.geometric, calc} %copertina
+\usepackage{xcolor} %copertina
+\usepackage{tcolorbox}
+
+%\usepackage[scaled=0.8]{luximono}
+%\usepackage{geometry}
+
+\def\code#1{\texttt{#1}}
+
+
+
+\usepackage{listings} %sql
+\lstset{
+    language=C++, 
+    basicstyle=\small\ttfamily,
+    numbers=left, 
+    numberstyle=\tiny, 
+    frame=line,
+    keywordstyle=\color{blue},
+    commentstyle=\color{purple},
+    stringstyle=\color{orange},
+    %identifierstyle=\color{black},
+    %numberstyle=\tiny\color{black},
+    breaklines=true,
+    linewidth=1.185\linewidth
+}
+
+
+
+
+\begin{document}
+
+\input{Copertina/copertina}
+
+\newpage
+\tableofcontents
+\newpage
+\pagestyle{fancy}
+\fancyhead[L]{ }
+
+\section{Compilazione}
+\input{Capitoli/Compilatore/compilatore}
+\newpage
+\section{Tipi di dati}
+\input{Capitoli/Tipi di dato/Tipi di dato}
+\section{Allocazione in memoria}
+\input{Capitoli/Allocazione Memoria/Allocazione}
+\section{Tipi definiti dal utente}
+\input{Capitoli/Tipi definiti dai utenti/tipi utente}
+\section{iostream}
+\input{Capitoli/iostream/iostream}
+\newpage
+\section{String e  Random}
+\input{Capitoli/Stringe e Random/StringeERandom}
+\newpage
+\section{Puntatore a funzione}
+\input{Capitoli/Puntatori a Funzione/Puntatore a funzione}
+\section{Eccezioni}
+\input{Capitoli/Eccezioni/eccezioni}
+\newpage
+\section{Classi}
+\input{Capitoli/Classi/Classi}
+\newpage
+\section{Alberi Binari}
+\input{Capitoli/Alberi Binari/Alberi}
+\section{Iteratori}
+\input{Capitoli/Iteratori/iteratori}
+\newpage
+\section{HashTable}
+\input{Capitoli/HashTable/hash}
+\newpage
+\section{Grafi}
+\input{Capitoli/Grafi/grafi}
+\newpage
+\section{Intercorso}
+\input{Capitoli/Intercorso/intercorso}
+\end{document}

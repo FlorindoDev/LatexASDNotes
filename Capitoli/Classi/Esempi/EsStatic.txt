@@ -1,0 +1,26 @@
+// static_data_members.cpp
+class BufferedOutput
+{
+public:
+   // Return number of bytes written by any object of this class.
+   short BytesWritten()
+   {
+      return bytecount;
+   }
+
+   // Reset the counter.
+   static void ResetCount()
+   {
+      bytecount = 0;
+   }
+
+   // Static member declaration.
+   static long bytecount;
+};
+
+// Define bytecount in file scope.
+long BufferedOutput::bytecount;
+
+int main()
+{
+}

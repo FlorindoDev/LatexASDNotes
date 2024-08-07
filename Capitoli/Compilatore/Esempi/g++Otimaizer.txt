@@ -1,0 +1,1 @@
+g++ -03 sorgente.cpp -o nomefile

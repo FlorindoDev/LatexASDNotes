@@ -1,0 +1,12 @@
+class Date{
+    int d,m,y;
+    public:
+        int day() const {return d;}
+        int month() const {return m;}
+        int year() const;
+        // ...
+    };
+    
+void Date::year() const {
+    return y;
+}

@@ -1,0 +1,12 @@
+class Date{
+    int d,m,y;
+    public:
+        void init(int dd, int mm, int yy);
+        void add_year(int n);
+        void add_month(int n);
+        void add_day(int n);
+}
+
+Date my_birthday;
+my_birthday.init(14,1,1988);
+Date d1 = my_birthday;
